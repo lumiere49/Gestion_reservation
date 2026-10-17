@@ -1,0 +1,5316 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+
+/* =========================================================
+   VLIFE - IDENTITÉ VISUELLE
+   ========================================================= */
+
+:root {
+    --vlife-bordeaux: #8B0038;
+    --vlife-bordeaux-dark: #65002A;
+    --vlife-bordeaux-light: #A81750;
+
+    --vlife-anthracite: #333333;
+    --vlife-gray: #666666;
+    --vlife-light-gray: #F3F4F6;
+    --vlife-border: #E5E7EB;
+
+    --vlife-white: #FFFFFF;
+
+    --vlife-gradient: linear-gradient(
+        135deg,
+        #8B0038 0%,
+        #666666 100%
+    );
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--vlife-light-gray);
+    color: var(--vlife-anthracite);
+}
+
+
+/* =========================================================
+   STRUCTURE PRINCIPALE
+   ========================================================= */
+
+.vlife-layout {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--vlife-light-gray);
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.vlife-sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: 250px;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: linear-gradient(
+        180deg,
+        #303030 0%,
+        #242424 100%
+    );
+
+    color: #ffffff;
+
+    box-shadow: 4px 0 18px rgba(0, 0, 0, 0.12);
+
+    z-index: 1000;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.vlife-logo-container {
+    width: 100%;
+    height: 125px;
+
+    padding: 15px 15px 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+
+    flex-shrink: 0;
+}
+
+.vlife-logo {
+    display: block;
+
+    width: 120px !important;
+    height: 65px !important;
+
+    max-width: 120px !important;
+    max-height: 65px !important;
+
+    object-fit: contain;
+
+    margin: 0 auto;
+
+    flex-shrink: 0;
+}
+
+.vlife-logo-title {
+    margin-top: 4px;
+
+    font-size: 10px;
+    line-height: 1;
+
+    font-weight: 600;
+
+    letter-spacing: 1.8px;
+
+    color: #D8D8D8;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.vlife-navigation {
+    width: 100%;
+
+    flex: 1;
+
+    padding: 18px 12px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.vlife-menu-title {
+    margin: 0 10px 10px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    color: #AFAFAF;
+}
+
+
+/* =========================================================
+   LIENS DU MENU
+   ========================================================= */
+
+.vlife-menu-link {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 11px 12px;
+    margin: 0 0 5px 0;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    color: #D5D5D5;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.vlife-menu-link:hover {
+    color: #ffffff;
+
+    background: rgba(139, 0, 56, 0.35);
+
+    transform: translateX(2px);
+}
+
+.vlife-menu-link.active {
+    color: #ffffff;
+
+    background: var(--vlife-gradient);
+
+    box-shadow:
+        0 5px 15px rgba(139, 0, 56, 0.25);
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   ICÔNES
+   ========================================================= */
+
+.vlife-icon {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 16px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   BAS SIDEBAR
+   ========================================================= */
+
+.vlife-sidebar-bottom {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+
+    flex-shrink: 0;
+}
+
+.vlife-system-status {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 7px;
+
+    font-size: 10px;
+
+    color: #CFCFCF;
+}
+
+.status-dot {
+    width: 8px;
+    min-width: 8px;
+    height: 8px;
+
+    background: #38A169;
+
+    border-radius: 50%;
+
+    display: inline-block;
+}
+
+.vlife-version {
+    color: #8F8F8F;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   ZONE PRINCIPALE
+   ========================================================= */
+
+.vlife-main {
+    width: calc(100% - 250px);
+
+    min-height: 100vh;
+
+    margin-left: 250px;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.vlife-header {
+    width: 100%;
+    height: 78px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 28px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid var(--vlife-border);
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 900;
+}
+
+
+/* =========================================================
+   TITRE
+   ========================================================= */
+
+.vlife-header-left {
+    min-width: 0;
+}
+
+.vlife-page-title {
+    min-width: 0;
+}
+
+.vlife-page-title h1 {
+    margin: 0;
+
+    color: var(--vlife-anthracite);
+
+    font-size: 20px;
+    line-height: 1.2;
+
+    font-weight: 650;
+}
+
+.vlife-page-title p {
+    margin: 4px 0 0;
+
+    color: var(--vlife-gray);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   UTILISATEUR
+   ========================================================= */
+
+.vlife-header-right {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    flex-shrink: 0;
+}
+
+.vlife-date {
+    color: #777777;
+
+    font-size: 12px;
+}
+
+.vlife-user {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding-left: 16px;
+
+    border-left: 1px solid var(--vlife-border);
+}
+
+.vlife-user-avatar {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+
+    background: var(--vlife-gradient);
+
+    color: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+    font-size: 13px;
+
+    flex-shrink: 0;
+}
+
+.vlife-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.vlife-user-info strong {
+    font-size: 12px;
+
+    color: #333333;
+}
+
+.vlife-user-info small {
+    font-size: 9px;
+
+    color: #888888;
+
+    margin-top: 2px;
+}
+
+
+/* =========================================================
+   CONTENU PRINCIPAL
+   ========================================================= */
+
+.vlife-content {
+    width: 100%;
+
+    flex: 1;
+
+    padding: 25px 28px;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.vlife-footer {
+    width: 100%;
+
+    padding: 13px 28px;
+
+    background: #ffffff;
+
+    border-top: 1px solid var(--vlife-border);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 10px;
+
+    color: #888888;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   CARTES
+   ========================================================= */
+
+.vlife-card {
+    width: 100%;
+
+    background: #ffffff;
+
+    border-radius: 12px;
+
+    border: 1px solid var(--vlife-border);
+
+    padding: 20px;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+.vlife-card-title {
+    font-size: 15px;
+
+    font-weight: 650;
+
+    color: var(--vlife-anthracite);
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   BOUTONS VLIFE
+   ========================================================= */
+
+.btn-vlife {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--vlife-gradient);
+
+    border: none;
+
+    color: #ffffff;
+
+    padding: 9px 18px;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.btn-vlife:hover {
+    color: #ffffff;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 5px 12px rgba(139, 0, 56, 0.25);
+}
+
+
+/* =========================================================
+   TABLEAUX
+   ========================================================= */
+
+.vlife-content table {
+    width: 100%;
+    max-width: 100%;
+
+    border-collapse: collapse;
+}
+
+.vlife-content th,
+.vlife-content td {
+    padding: 10px 12px;
+
+    border-bottom: 1px solid var(--vlife-border);
+
+    text-align: left;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   FORMULAIRES
+   ========================================================= */
+
+.vlife-content input,
+.vlife-content select,
+.vlife-content textarea {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   RESPONSIVE - PETIT ÉCRAN
+   ========================================================= */
+
+@media (max-width: 750px) {
+
+    .vlife-sidebar {
+        width: 68px;
+    }
+
+    .vlife-logo-container {
+        height: 80px;
+        padding: 10px 5px;
+    }
+
+    .vlife-logo {
+        width: 48px !important;
+        height: 45px !important;
+
+        max-width: 48px !important;
+        max-height: 45px !important;
+    }
+
+    .vlife-logo-title,
+    .vlife-menu-title,
+    .vlife-menu-link span:not(.vlife-icon),
+    .vlife-system-status,
+    .vlife-version {
+        display: none;
+    }
+
+    .vlife-navigation {
+        padding: 15px 8px;
+    }
+
+    .vlife-menu-link {
+        justify-content: center;
+
+        padding: 12px 5px;
+    }
+
+    .vlife-main {
+        width: calc(100% - 68px);
+
+        margin-left: 68px;
+    }
+
+    .vlife-header {
+        height: 68px;
+
+        padding: 0 15px;
+    }
+
+    .vlife-page-title h1 {
+        font-size: 16px;
+    }
+
+    .vlife-page-title p,
+    .vlife-date,
+    .vlife-user-info {
+        display: none;
+    }
+
+    .vlife-content {
+        padding: 15px;
+    }
+
+    .vlife-footer {
+        display: none;
+    }
+
+    /* =====================================================
+   ALIGNEMENT DES BOUTONS DES CARTES SERVICES
+   ===================================================== */
+
+.card.h-100 {
+    display: flex;
+    flex-direction: column;
+}
+
+.card.h-100 .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card.h-100 .card-body .btn {
+    margin-top: auto;
+}
+/* =====================================================
+   PAGE SERVICES VLIFE
+   ===================================================== */
+
+.service-card {
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-3px);
+}
+
+.service-card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+    color: white;
+}
+
+.service-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.18);
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.service-label {
+    font-size: 12px;
+    opacity: 0.85;
+}
+
+.service-description {
+    min-height: 48px;
+    margin-bottom: 10px;
+}
+
+.service-information {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.service-information-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.service-information-label {
+    font-size: 12px;
+    color: var(--vlife-gray);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.service-information-item strong {
+    color: var(--vlife-anthracite);
+    font-size: 14px;
+}
+
+.service-card .btn {
+    white-space: nowrap;
+}
+}
+
+/* =========================================================
+   RESPONSIVE - TABLETTE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .vlife-sidebar {
+        width: 220px;
+    }
+
+    .vlife-main {
+        width: calc(100% - 220px);
+        margin-left: 220px;
+    }
+
+    .vlife-header {
+        padding: 0 20px;
+    }
+
+    .vlife-content {
+        padding: 20px;
+    }
+
+    .vlife-footer {
+        padding: 12px 20px;
+    }
+}
+
+/* =====================================================
+   ALIGNEMENT DES CARTES SERVICES
+   ===================================================== */
+
+.card.h-100 {
+    display: flex;
+    flex-direction: column;
+}
+
+.card.h-100 .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card.h-100 .card-body .btn {
+    margin-top: auto;
+}
+
+
+/* =====================================================
+   PAGE SERVICES VLIFE
+   ===================================================== */
+
+.service-card {
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-3px);
+}
+
+.service-card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: white;
+}
+
+.service-icon {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.service-label {
+    font-size: 12px;
+    opacity: 0.85;
+}
+
+.service-description {
+    min-height: 48px;
+    margin-bottom: 10px;
+}
+
+.service-information {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.service-information-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.service-information-label {
+    font-size: 12px;
+    color: var(--vlife-gray);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.service-information-item strong {
+    color: var(--vlife-anthracite);
+    font-size: 14px;
+}
+
+.service-card .btn {
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   BOUTONS SERVICES VLIFE
+   ===================================================== */
+
+.services-actions .btn-service-view {
+    background-color: #666666 !important;
+    border-color: #666666 !important;
+    color: #ffffff !important;
+}
+
+.services-actions .btn-service-view:hover {
+    background-color: #4f4f4f !important;
+    border-color: #4f4f4f !important;
+    color: #ffffff !important;
+}
+
+
+.services-actions .btn-service-edit {
+    background-color: var(--vlife-bordeaux) !important;
+    border-color: var(--vlife-bordeaux) !important;
+    color: #ffffff !important;
+}
+
+.services-actions .btn-service-edit:hover {
+    background-color: var(--vlife-bordeaux-dark) !important;
+    border-color: var(--vlife-bordeaux-dark) !important;
+    color: #ffffff !important;
+}
+
+
+.services-actions .btn-service-delete {
+    background-color: var(--vlife-bordeaux-dark) !important;
+    border-color: var(--vlife-bordeaux-dark) !important;
+    color: #ffffff !important;
+}
+
+.services-actions .btn-service-delete:hover {
+    background-color: #45001D !important;
+    border-color: #45001D !important;
+    color: #ffffff !important;
+}
+
+/* =========================================================
+   PRESTATIONS
+   ========================================================= */
+
+.prestation-table-card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+
+/* EN-TÊTE DU TABLEAU */
+
+.prestation-table-header {
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: white;
+
+    padding: 18px 22px;
+}
+
+.prestation-table-header h5 {
+    color: white;
+}
+
+.prestation-table-header span {
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+
+/* TABLEAU */
+
+.prestation-table-card .table {
+    min-width: 1000px;
+}
+
+.prestation-table-card thead th {
+    background: #f8f9fa;
+    color: var(--vlife-anthracite);
+
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+
+    font-weight: 700;
+
+    padding: 15px;
+    border-bottom: 1px solid var(--vlife-border);
+}
+
+.prestation-table-card tbody td {
+    padding: 15px;
+    border-bottom: 1px solid #eeeeee;
+    color: #444444;
+}
+
+.prestation-table-card tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ID */
+
+.prestation-id {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--vlife-bordeaux);
+}
+
+
+/* SERVICE */
+
+.prestation-service {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.prestation-service-icon {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: white;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.prestation-service strong {
+    font-size: 14px;
+    color: var(--vlife-anthracite);
+}
+
+
+/* NOM */
+
+.prestation-name {
+    color: var(--vlife-anthracite);
+    font-size: 14px;
+}
+
+
+/* PRIX */
+
+.prestation-price {
+    font-weight: 700;
+    color: var(--vlife-bordeaux);
+    white-space: nowrap;
+}
+
+
+/* DURÉE */
+
+.prestation-duration {
+    display: inline-block;
+
+    padding: 5px 9px;
+
+    border-radius: 6px;
+
+    background: #f1f1f1;
+
+    color: var(--vlife-anthracite);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* DESCRIPTION */
+
+.prestation-description {
+    display: block;
+
+    max-width: 240px;
+
+    font-size: 13px;
+    color: var(--vlife-gray);
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ACTIONS */
+
+.prestation-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+
+    white-space: nowrap;
+}
+
+
+/* VOIR */
+
+.prestation-actions .btn-prestation-view {
+    background-color: #666666 !important;
+    border-color: #666666 !important;
+    color: #ffffff !important;
+}
+
+.prestation-actions .btn-prestation-view:hover {
+    background-color: #4f4f4f !important;
+    border-color: #4f4f4f !important;
+    color: #ffffff !important;
+}
+
+
+/* MODIFIER */
+
+.prestation-actions .btn-prestation-edit {
+    background-color: var(--vlife-bordeaux) !important;
+    border-color: var(--vlife-bordeaux) !important;
+    color: #ffffff !important;
+}
+
+.prestation-actions .btn-prestation-edit:hover {
+    background-color: var(--vlife-bordeaux-dark) !important;
+    border-color: var(--vlife-bordeaux-dark) !important;
+    color: #ffffff !important;
+}
+
+
+/* SUPPRIMER */
+
+.prestation-actions .btn-prestation-delete {
+    background-color: var(--vlife-bordeaux-dark) !important;
+    border-color: var(--vlife-bordeaux-dark) !important;
+    color: #ffffff !important;
+}
+
+.prestation-actions .btn-prestation-delete:hover {
+    background-color: #45001D !important;
+    border-color: #45001D !important;
+    color: #ffffff !important;
+}
+
+
+/* AUCUNE PRESTATION */
+
+.prestation-empty {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.prestation-empty-icon {
+    width: 55px;
+    height: 55px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: white;
+
+    font-weight: 700;
+}
+
+.prestation-empty h5 {
+    color: var(--vlife-anthracite);
+    margin-bottom: 6px;
+}
+
+.prestation-empty p {
+    color: var(--vlife-gray);
+    margin-bottom: 20px;
+}
+
+/* =========================================================
+   FORMULAIRE PRESTATION
+   ========================================================= */
+
+.prestation-form-card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+
+/* EN-TÊTE */
+
+.prestation-form-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 22px 25px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: white;
+}
+
+.prestation-form-header h4 {
+    color: white;
+    font-weight: 700;
+}
+
+.prestation-form-header p {
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+.prestation-form-icon {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    color: white;
+
+    font-weight: 700;
+}
+
+
+/* LABELS */
+
+.prestation-form-label {
+    color: var(--vlife-anthracite);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+/* CHAMPS */
+
+.prestation-input {
+    min-height: 44px;
+
+    border: 1px solid #dfe1e5;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    transition: all 0.2s ease;
+}
+
+textarea.prestation-input {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.prestation-input:focus {
+    border-color: var(--vlife-bordeaux);
+
+    box-shadow: 0 0 0 0.2rem rgba(139, 0, 56, 0.10);
+}
+
+
+/* UNITÉ FCFA */
+
+.prestation-unit {
+    background: #f5f5f5;
+
+    border-color: #dfe1e5;
+
+    color: var(--vlife-anthracite);
+
+    font-weight: 600;
+
+    font-size: 13px;
+}
+
+
+/* ERREURS */
+
+.prestation-error {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+
+/* BOUTONS */
+
+.prestation-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 30px;
+    padding-top: 22px;
+
+    border-top: 1px solid var(--vlife-border);
+
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.prestation-form-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: max-content;
+
+    padding: 9px 18px;
+
+    white-space: nowrap;
+
+    box-sizing: border-box;
+}
+
+
+/* ANNULER */
+
+.btn-prestation-cancel {
+    background-color: #f1f1f1 !important;
+    border: 1px solid #dddddd !important;
+
+    color: var(--vlife-anthracite) !important;
+
+    min-width: 95px !important;
+}
+
+.btn-prestation-cancel:hover {
+    background-color: #e4e4e4 !important;
+    border-color: #cccccc !important;
+
+    color: var(--vlife-anthracite) !important;
+}
+
+.prestation-form-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 22px 25px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: white;
+
+    overflow: visible;
+}
+
+/* ENREGISTRER */
+
+.prestation-form-actions .btn-vlife {
+    min-width: 210px;
+}
+
+
+/* RETOUR */
+
+.btn-prestation-back {
+    background-color: #666666 !important;
+
+    border-color: #666666 !important;
+
+    color: white !important;
+}
+
+.btn-prestation-back:hover {
+    background-color: #4f4f4f !important;
+
+    border-color: #4f4f4f !important;
+
+    color: white !important;
+}
+
+
+/* ANNULER */
+
+.btn-prestation-cancel {
+    background-color: #f1f1f1 !important;
+
+    border-color: #dddddd !important;
+
+    color: var(--vlife-anthracite) !important;
+}
+
+.btn-prestation-cancel:hover {
+    background-color: #e4e4e4 !important;
+
+    border-color: #cccccc !important;
+
+    color: var(--vlife-anthracite) !important;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 576px) {
+
+    .prestation-form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .prestation-form-actions .btn {
+        width: 100%;
+    }
+
+}
+/* =========================================================
+   DETAILS PRESTATION
+   ========================================================= */
+
+.prestation-show-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.prestation-show-card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+/* EN-TÊTE */
+
+.prestation-show-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 25px;
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+    color: #ffffff;
+}
+
+.prestation-show-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.prestation-show-label {
+    display: block;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+
+    opacity: 0.8;
+
+    margin-bottom: 3px;
+}
+
+.prestation-show-header h2 {
+    color: #ffffff;
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.prestation-show-header p {
+    color: #ffffff;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+
+/* INFORMATIONS */
+
+.prestation-detail-item {
+    min-height: 82px;
+
+    padding: 16px 18px;
+
+    background: #f8f9fa;
+
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 5px;
+}
+
+.prestation-detail-label {
+    font-size: 11px;
+    font-weight: 700;
+
+    color: var(--vlife-gray);
+
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.prestation-detail-value {
+    font-size: 15px;
+    color: var(--vlife-anthracite);
+}
+
+.prestation-detail-id {
+    color: var(--vlife-bordeaux);
+}
+
+.prestation-detail-price {
+    color: var(--vlife-bordeaux);
+    font-size: 17px;
+}
+
+
+/* ACTIONS DU BAS */
+
+.prestation-show-footer {
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 30px;
+    padding-top: 22px;
+
+    border-top: 1px solid var(--vlife-border);
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 576px) {
+
+    .prestation-show-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .prestation-show-actions .btn {
+        width: 100%;
+    }
+
+    .prestation-show-header {
+        padding: 20px;
+    }
+
+    .prestation-show-footer {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .prestation-show-footer .btn {
+        width: 100%;
+    }
+
+}
+/* =========================================================
+   RESSOURCES - LISTE
+   ========================================================= */
+
+.ressource-table-card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.ressource-table-header {
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+    color: #ffffff;
+    padding: 18px 22px;
+}
+
+.ressource-table-header h5 {
+    color: #ffffff;
+}
+
+.ressource-table-header span {
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+.ressource-table-card .table {
+    min-width: 1100px;
+}
+
+.ressource-table-card thead th {
+    background: #f8f9fa;
+    color: var(--vlife-anthracite);
+
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+
+    font-weight: 700;
+
+    padding: 15px;
+
+    border-bottom: 1px solid var(--vlife-border);
+}
+
+.ressource-table-card tbody td {
+    padding: 15px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    color: #444444;
+}
+
+.ressource-table-card tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ID */
+
+.ressource-id {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--vlife-bordeaux);
+}
+
+
+/* SERVICE */
+
+.ressource-service {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ressource-service-icon {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.ressource-service strong {
+    font-size: 14px;
+    color: var(--vlife-anthracite);
+}
+
+
+/* NOM */
+
+.ressource-name {
+    color: var(--vlife-anthracite);
+    font-size: 14px;
+}
+
+
+/* TYPE */
+
+.ressource-type {
+    display: inline-block;
+
+    padding: 5px 9px;
+
+    border-radius: 6px;
+
+    background: #f1f1f1;
+
+    color: var(--vlife-anthracite);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* ÉTAT */
+
+.ressource-status {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    background: rgba(139, 0, 56, 0.08);
+
+    color: var(--vlife-bordeaux);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* CAPACITÉ */
+
+.ressource-capacity {
+    font-weight: 700;
+
+    color: var(--vlife-anthracite);
+
+    white-space: nowrap;
+}
+
+
+/* DESCRIPTION */
+
+.ressource-description {
+    display: block;
+
+    max-width: 220px;
+
+    font-size: 13px;
+
+    color: var(--vlife-gray);
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* ACTIONS */
+
+.ressource-actions {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 6px;
+
+    white-space: nowrap;
+}
+
+.ressource-actions .btn-ressource-view {
+    background-color: #666666 !important;
+    border-color: #666666 !important;
+    color: #ffffff !important;
+}
+
+.ressource-actions .btn-ressource-view:hover {
+    background-color: #4f4f4f !important;
+    border-color: #4f4f4f !important;
+    color: #ffffff !important;
+}
+
+.ressource-actions .btn-ressource-edit {
+    background-color: var(--vlife-bordeaux) !important;
+    border-color: var(--vlife-bordeaux) !important;
+    color: #ffffff !important;
+}
+
+.ressource-actions .btn-ressource-edit:hover {
+    background-color: var(--vlife-bordeaux-dark) !important;
+    border-color: var(--vlife-bordeaux-dark) !important;
+    color: #ffffff !important;
+}
+
+.ressource-actions .btn-ressource-delete {
+    background-color: var(--vlife-bordeaux-dark) !important;
+    border-color: var(--vlife-bordeaux-dark) !important;
+    color: #ffffff !important;
+}
+
+.ressource-actions .btn-ressource-delete:hover {
+    background-color: #45001D !important;
+    border-color: #45001D !important;
+    color: #ffffff !important;
+}
+
+
+/* AUCUNE RESSOURCE */
+
+.ressource-empty {
+    text-align: center;
+
+    padding: 60px 20px;
+}
+
+.ressource-empty-icon {
+    width: 55px;
+    height: 55px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #ffffff;
+
+    font-weight: 700;
+}
+
+.ressource-empty h5 {
+    color: var(--vlife-anthracite);
+
+    margin-bottom: 6px;
+}
+
+.ressource-empty p {
+    color: var(--vlife-gray);
+
+    margin-bottom: 20px;
+}
+
+/* =========================================================
+   RESSOURCES - FORMULAIRE
+   ========================================================= */
+
+.ressource-form-card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.ressource-form-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 22px 25px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #ffffff;
+}
+
+.ressource-form-icon {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.ressource-form-header h4 {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.ressource-form-header p {
+    color: #ffffff;
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+.ressource-form-label {
+    color: var(--vlife-anthracite);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+.ressource-input {
+    min-height: 44px;
+
+    border: 1px solid #dfe1e5;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    transition: all 0.2s ease;
+}
+
+textarea.ressource-input {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.ressource-input:focus {
+    border-color: var(--vlife-bordeaux);
+
+    box-shadow:
+        0 0 0 0.2rem
+        rgba(139, 0, 56, 0.10);
+}
+
+
+/* BOUTON RETOUR */
+
+.btn-ressource-back {
+    background-color: #666666 !important;
+    border-color: #666666 !important;
+    color: #ffffff !important;
+}
+
+.btn-ressource-back:hover {
+    background-color: #4f4f4f !important;
+    border-color: #4f4f4f !important;
+    color: #ffffff !important;
+}
+
+
+/* ACTIONS */
+
+.ressource-form-actions {
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    margin-top: 30px;
+    padding-top: 22px;
+
+    border-top: 1px solid var(--vlife-border);
+}
+
+.ressource-form-actions .btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    width: auto;
+    min-height: 42px;
+
+    padding: 0 18px;
+
+    margin: 0;
+
+    white-space: nowrap;
+
+    box-sizing: border-box;
+}
+
+
+/* ANNULER */
+
+.ressource-form-actions .btn-ressource-cancel {
+    min-width: 105px;
+
+    background: #f1f1f1 !important;
+    border: 1px solid #cccccc !important;
+
+    color: #333333 !important;
+}
+
+.ressource-form-actions .btn-ressource-cancel:hover {
+    background: #e2e2e2 !important;
+    border-color: #bbbbbb !important;
+    color: #222222 !important;
+}
+
+
+/* ENREGISTRER */
+
+.ressource-form-actions .btn-save-ressource {
+    min-width: 205px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    ) !important;
+
+    border: none !important;
+
+    color: #ffffff !important;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 576px) {
+
+    .ressource-form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .ressource-form-actions .btn {
+        width: 100%;
+    }
+
+}
+/* =========================================================
+   RESSOURCES - DETAILS
+   ========================================================= */
+
+.ressource-show-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ressource-show-card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+
+/* EN-TÊTE */
+
+.ressource-show-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding: 25px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #ffffff;
+}
+
+.ressource-show-icon {
+    width: 58px;
+    height: 58px;
+
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    color: #ffffff;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.ressource-show-label {
+    display: block;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    opacity: 0.8;
+
+    margin-bottom: 3px;
+}
+
+.ressource-show-header h2 {
+    color: #ffffff;
+
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.ressource-show-header p {
+    color: #ffffff;
+
+    font-size: 13px;
+
+    opacity: 0.8;
+}
+
+
+/* INFORMATIONS */
+
+.ressource-detail-item {
+    min-height: 82px;
+
+    padding: 16px 18px;
+
+    background: #f8f9fa;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 5px;
+}
+
+.ressource-detail-label {
+    font-size: 11px;
+    font-weight: 700;
+
+    color: var(--vlife-gray);
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.4px;
+}
+
+.ressource-detail-value {
+    font-size: 15px;
+
+    color: var(--vlife-anthracite);
+}
+
+.ressource-detail-id {
+    color: var(--vlife-bordeaux);
+}
+
+.ressource-detail-status {
+    color: var(--vlife-bordeaux);
+}
+
+
+/* DESCRIPTION */
+
+.ressource-detail-description {
+    min-height: 100px;
+}
+
+.ressource-detail-description p {
+    color: var(--vlife-gray);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* ACTIONS BAS */
+
+.ressource-show-footer {
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 30px;
+    padding-top: 22px;
+
+    border-top: 1px solid var(--vlife-border);
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 576px) {
+
+    .ressource-show-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .ressource-show-actions .btn {
+        width: 100%;
+    }
+
+    .ressource-show-header {
+        padding: 20px;
+    }
+
+    .ressource-show-footer {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .ressource-show-footer .btn {
+        width: 100%;
+    }
+
+}
+/* =========================================================
+   CLIENTS - LISTE
+   ========================================================= */
+
+.client-table-card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.client-table-header {
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+    color: #fff;
+    padding: 18px 22px;
+}
+
+.client-table-header h5 {
+    color: #fff;
+}
+
+.client-table-header span {
+    font-size: 13px;
+    opacity: .85;
+}
+
+
+/* TABLEAU */
+
+.client-table-card .table {
+    min-width: 950px;
+}
+
+.client-table-card thead th {
+    background: #f8f9fa;
+    color: var(--vlife-anthracite);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    font-weight: 700;
+    padding: 15px;
+    border-bottom: 1px solid var(--vlife-border);
+}
+
+.client-table-card tbody td {
+    padding: 15px;
+    border-bottom: 1px solid #eeeeee;
+    color: #444;
+}
+
+.client-table-card tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ID */
+
+.client-id {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--vlife-bordeaux);
+}
+
+
+/* INFORMATIONS CLIENT */
+
+.client-information {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.client-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.client-information > div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.client-name {
+    color: var(--vlife-anthracite);
+    font-size: 14px;
+}
+
+.client-reference {
+    color: var(--vlife-gray);
+    font-size: 11px;
+}
+
+
+/* EMAIL */
+
+.client-email {
+    color: var(--vlife-anthracite);
+    font-size: 13px;
+}
+
+
+/* TELEPHONE */
+
+.client-phone {
+    color: var(--vlife-anthracite);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* ADRESSE */
+
+.client-address {
+    display: block;
+    max-width: 200px;
+
+    color: var(--vlife-gray);
+    font-size: 13px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ACTIONS */
+
+.client-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.client-actions .btn {
+    white-space: nowrap;
+}
+
+
+/* VOIR */
+
+.client-actions .btn-client-view {
+    background-color: #666666 !important;
+    border-color: #666666 !important;
+    color: #fff !important;
+}
+
+.client-actions .btn-client-view:hover {
+    background-color: #4f4f4f !important;
+    border-color: #4f4f4f !important;
+    color: #fff !important;
+}
+
+
+/* MODIFIER */
+
+.client-actions .btn-client-edit {
+    background-color: var(--vlife-bordeaux) !important;
+    border-color: var(--vlife-bordeaux) !important;
+    color: #fff !important;
+}
+
+.client-actions .btn-client-edit:hover {
+    background-color: var(--vlife-bordeaux-dark) !important;
+    border-color: var(--vlife-bordeaux-dark) !important;
+    color: #fff !important;
+}
+
+
+/* SUPPRIMER */
+
+.client-actions .btn-client-delete {
+    background-color: var(--vlife-bordeaux-dark) !important;
+    border-color: var(--vlife-bordeaux-dark) !important;
+    color: #fff !important;
+}
+
+.client-actions .btn-client-delete:hover {
+    background-color: #45001D !important;
+    border-color: #45001D !important;
+    color: #fff !important;
+}
+
+
+/* ÉTAT VIDE */
+
+.client-empty {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.client-empty-icon {
+    width: 55px;
+    height: 55px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+    font-weight: 700;
+}
+
+.client-empty h5 {
+    color: var(--vlife-anthracite);
+    margin-bottom: 6px;
+}
+
+.client-empty p {
+    color: var(--vlife-gray);
+    margin-bottom: 20px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 576px) {
+
+    .client-table-card .table {
+        min-width: 900px;
+    }
+
+}
+/* =========================================================
+   CLIENTS - FORMULAIRE
+   ========================================================= */
+
+.client-form-card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+
+/* EN-TÊTE */
+
+.client-form-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 22px 25px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+}
+
+.client-form-icon {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,.18);
+
+    color: #fff;
+
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.client-form-header h4 {
+    color: #fff;
+    font-weight: 700;
+}
+
+.client-form-header p {
+    color: #fff;
+    font-size: 13px;
+    opacity: .85;
+}
+
+
+/* LABELS */
+
+.client-form-label {
+    display: block;
+
+    color: var(--vlife-anthracite);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+/* CHAMPS */
+
+.client-input {
+    min-height: 44px;
+
+    border: 1px solid #dfe1e5;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    transition: all .2s ease;
+}
+
+.client-input:focus {
+    border-color: var(--vlife-bordeaux);
+
+    box-shadow:
+        0 0 0 .2rem rgba(139,0,56,.10);
+}
+
+.client-input::placeholder {
+    color: #aaa;
+}
+
+
+/* AIDE */
+
+.client-form-help {
+    display: block;
+
+    margin-top: 7px;
+
+    color: var(--vlife-gray);
+
+    font-size: 12px;
+}
+
+
+/* BOUTON RETOUR */
+
+.btn-client-back {
+    background-color: #666 !important;
+    border-color: #666 !important;
+    color: #fff !important;
+}
+
+.btn-client-back:hover {
+    background-color: #4f4f4f !important;
+    border-color: #4f4f4f !important;
+    color: #fff !important;
+}
+
+
+/* ACTIONS */
+
+.client-form-actions {
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    margin-top: 30px;
+    padding-top: 22px;
+
+    border-top: 1px solid var(--vlife-border);
+}
+
+.client-form-actions .btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    width: auto;
+    min-height: 42px;
+
+    padding: 0 18px;
+
+    margin: 0;
+
+    white-space: nowrap;
+
+    box-sizing: border-box;
+}
+
+
+/* ANNULER */
+
+.client-form-actions .btn-client-cancel {
+    min-width: 105px;
+
+    background: #f1f1f1 !important;
+
+    border: 1px solid #ccc !important;
+
+    color: #333 !important;
+}
+
+.client-form-actions .btn-client-cancel:hover {
+    background: #e2e2e2 !important;
+
+    border-color: #bbb !important;
+
+    color: #222 !important;
+}
+
+
+/* ENREGISTRER */
+
+.client-form-actions .btn-save-client {
+    min-width: 205px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    ) !important;
+
+    border: none !important;
+
+    color: #fff !important;
+}
+
+.client-form-actions .btn-save-client:hover {
+    opacity: .92;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 576px) {
+
+    .client-form-header {
+        padding: 20px;
+    }
+
+    .client-form-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .client-form-actions .btn {
+        width: 100%;
+    }
+
+}
+
+/* =========================================================
+   CLIENTS - DÉTAILS
+   ========================================================= */
+
+.client-show-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* CARTE */
+
+.client-show-card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+
+/* EN-TÊTE */
+
+.client-show-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    padding: 25px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+}
+
+
+/* AVATAR */
+
+.client-show-avatar {
+    width: 60px;
+    height: 60px;
+
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,.18);
+
+    color: #fff;
+
+    font-size: 21px;
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+
+/* TITRE */
+
+.client-show-label {
+    display: block;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: .8px;
+
+    opacity: .8;
+
+    margin-bottom: 3px;
+}
+
+.client-show-header h2 {
+    color: #fff;
+
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.client-show-header p {
+    color: #fff;
+
+    font-size: 13px;
+
+    opacity: .8;
+}
+
+
+/* INFORMATIONS */
+
+.client-detail-item {
+    min-height: 82px;
+
+    padding: 16px 18px;
+
+    background: #f8f9fa;
+
+    border: 1px solid #eee;
+
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 5px;
+}
+
+.client-detail-label {
+    font-size: 11px;
+
+    font-weight: 700;
+
+    color: var(--vlife-gray);
+
+    text-transform: uppercase;
+
+    letter-spacing: .4px;
+}
+
+.client-detail-value {
+    font-size: 15px;
+
+    color: var(--vlife-anthracite);
+
+    word-break: break-word;
+}
+
+.client-detail-id {
+    color: var(--vlife-bordeaux);
+}
+
+
+/* PIED DE CARTE */
+
+.client-show-footer {
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 30px;
+    padding-top: 22px;
+
+    border-top: 1px solid var(--vlife-border);
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 576px) {
+
+    .client-show-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .client-show-actions .btn {
+        width: 100%;
+    }
+
+    .client-show-header {
+        padding: 20px;
+    }
+
+    .client-show-footer {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .client-show-footer .btn {
+        width: 100%;
+    }
+
+}
+
+/* =========================================================
+   RÉSERVATIONS - LISTE
+   ========================================================= */
+
+.reservation-table-card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.reservation-table-header {
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+    padding: 18px 22px;
+}
+
+.reservation-table-header h5 {
+    color: #fff;
+}
+
+.reservation-table-header span {
+    font-size: 13px;
+    opacity: .85;
+}
+
+
+/* TABLE */
+
+.reservation-table-card .table {
+    min-width: 1450px;
+}
+
+.reservation-table-card thead th {
+    background: #f8f9fa;
+
+    color: var(--vlife-anthracite);
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .4px;
+
+    font-weight: 700;
+
+    padding: 15px;
+
+    border-bottom: 1px solid var(--vlife-border);
+
+    white-space: nowrap;
+}
+
+.reservation-table-card tbody td {
+    padding: 15px;
+
+    border-bottom: 1px solid #eee;
+
+    color: #444;
+
+    vertical-align: middle;
+}
+
+.reservation-table-card tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ID */
+
+.reservation-id {
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color: var(--vlife-bordeaux);
+
+    white-space: nowrap;
+}
+
+
+/* CLIENT */
+
+.reservation-client {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 175px;
+}
+
+.reservation-client-icon {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.reservation-client > div:last-child {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.reservation-client strong {
+    color: var(--vlife-anthracite);
+
+    font-size: 13px;
+}
+
+.reservation-client span {
+    color: var(--vlife-gray);
+
+    font-size: 10px;
+}
+
+
+/* SERVICE */
+
+.reservation-service {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    min-width: 150px;
+}
+
+.reservation-service-icon {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.reservation-service strong {
+    color: var(--vlife-anthracite);
+
+    font-size: 13px;
+}
+
+
+/* PRESTATIONS */
+
+.reservation-prestations {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    min-width: 140px;
+}
+
+.reservation-prestation {
+    display: inline-block;
+
+    color: var(--vlife-anthracite);
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+/* RESSOURCES */
+
+.reservation-resources {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    min-width: 120px;
+}
+
+.reservation-resource {
+    display: inline-block;
+
+    padding: 5px 9px;
+
+    border-radius: 6px;
+
+    background: rgba(139,0,56,.08);
+
+    color: var(--vlife-bordeaux);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.reservation-not-assigned {
+    color: #999;
+
+    font-size: 12px;
+
+    font-style: italic;
+
+    white-space: nowrap;
+}
+
+
+/* PRIX */
+
+.reservation-prices {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    min-width: 95px;
+}
+
+.reservation-price {
+    color: var(--vlife-anthracite);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.reservation-empty-value {
+    color: #999;
+
+    font-size: 12px;
+}
+
+
+/* DATE */
+
+.reservation-date {
+    color: var(--vlife-anthracite);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* HORAIRE */
+
+.reservation-time {
+    display: inline-block;
+
+    padding: 6px 9px;
+
+    border-radius: 6px;
+
+    background: #f1f1f1;
+
+    color: var(--vlife-anthracite);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* STATUT */
+
+.reservation-status {
+    display: inline-block;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.status-confirmed {
+    background: rgba(25,135,84,.12);
+
+    color: #198754;
+}
+
+.status-pending {
+    background: rgba(255,193,7,.16);
+
+    color: #997404;
+}
+
+.status-cancelled {
+    background: rgba(220,53,69,.12);
+
+    color: #dc3545;
+}
+
+.status-default {
+    background: #f1f1f1;
+
+    color: var(--vlife-anthracite);
+}
+
+
+/* ACTIONS */
+
+.reservation-actions {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 6px;
+
+    white-space: nowrap;
+}
+
+.reservation-actions .btn {
+    white-space: nowrap;
+}
+
+
+/* DÉTAILS */
+
+.reservation-actions .btn-reservation-view {
+    background-color: #666 !important;
+
+    border-color: #666 !important;
+
+    color: #fff !important;
+}
+
+.reservation-actions .btn-reservation-view:hover {
+    background-color: #4f4f4f !important;
+
+    border-color: #4f4f4f !important;
+
+    color: #fff !important;
+}
+
+
+/* MODIFIER */
+
+.reservation-actions .btn-reservation-edit {
+    background-color: var(--vlife-bordeaux) !important;
+
+    border-color: var(--vlife-bordeaux) !important;
+
+    color: #fff !important;
+}
+
+.reservation-actions .btn-reservation-edit:hover {
+    background-color: var(--vlife-bordeaux-dark) !important;
+
+    border-color: var(--vlife-bordeaux-dark) !important;
+
+    color: #fff !important;
+}
+
+
+/* ANNULER */
+
+.reservation-actions .btn-reservation-delete {
+    background-color: var(--vlife-bordeaux-dark) !important;
+
+    border-color: var(--vlife-bordeaux-dark) !important;
+
+    color: #fff !important;
+}
+
+.reservation-actions .btn-reservation-delete:hover {
+    background-color: #45001D !important;
+
+    border-color: #45001D !important;
+
+    color: #fff !important;
+}
+
+
+/* ÉTAT VIDE */
+
+.reservation-empty {
+    text-align: center;
+
+    padding: 60px 20px;
+}
+
+.reservation-empty-icon {
+    width: 55px;
+    height: 55px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+
+    font-weight: 700;
+}
+
+.reservation-empty h5 {
+    color: var(--vlife-anthracite);
+
+    margin-bottom: 6px;
+}
+
+.reservation-empty p {
+    color: var(--vlife-gray);
+
+    margin-bottom: 20px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 576px) {
+
+    .reservation-table-card .table {
+        min-width: 1450px;
+    }
+
+}
+/* =========================================================
+   RÉSERVATIONS - FORMULAIRE
+   ========================================================= */
+
+.reservation-form-card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+
+/* EN-TÊTE */
+
+.reservation-form-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 22px 25px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+}
+
+.reservation-form-icon {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,.18);
+
+    color: #fff;
+
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.reservation-form-header h4 {
+    color: #fff;
+    font-weight: 700;
+}
+
+.reservation-form-header p {
+    color: #fff;
+    font-size: 13px;
+    opacity: .85;
+}
+
+
+/* SECTIONS */
+
+.reservation-section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 22px;
+}
+
+.reservation-section-number {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.reservation-section-title h5 {
+    margin: 0 0 3px;
+
+    color: var(--vlife-anthracite);
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.reservation-section-title p {
+    margin: 0;
+
+    color: var(--vlife-gray);
+
+    font-size: 12px;
+}
+
+
+/* LABELS */
+
+.reservation-form-label {
+    display: block;
+
+    color: var(--vlife-anthracite);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+/* CHAMPS */
+
+.reservation-input {
+    min-height: 44px;
+
+    border: 1px solid #dfe1e5;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    transition: all .2s ease;
+}
+
+.reservation-input:focus {
+    border-color: var(--vlife-bordeaux);
+
+    box-shadow:
+        0 0 0 .2rem rgba(139,0,56,.10);
+}
+
+
+/* AIDE */
+
+.reservation-help {
+    display: block;
+
+    margin-top: 7px;
+
+    color: var(--vlife-gray);
+
+    font-size: 12px;
+}
+
+
+/* RETOUR */
+
+.btn-reservation-back {
+    background-color: #666 !important;
+
+    border-color: #666 !important;
+
+    color: #fff !important;
+}
+
+.btn-reservation-back:hover {
+    background-color: #4f4f4f !important;
+
+    border-color: #4f4f4f !important;
+
+    color: #fff !important;
+}
+
+
+/* INFORMATION RESSOURCE */
+
+.reservation-resource-notice {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-top: 35px;
+
+    padding: 16px 18px;
+
+    border-radius: 10px;
+
+    background: rgba(139,0,56,.06);
+
+    border: 1px solid rgba(139,0,56,.12);
+}
+
+.reservation-resource-notice-icon {
+    width: 32px;
+    height: 32px;
+
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--vlife-bordeaux);
+
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.reservation-resource-notice strong {
+    display: block;
+
+    color: var(--vlife-anthracite);
+
+    font-size: 13px;
+
+    margin-bottom: 3px;
+}
+
+.reservation-resource-notice p {
+    margin: 0;
+
+    color: var(--vlife-gray);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* ACTIONS */
+
+.reservation-form-actions {
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    margin-top: 30px;
+
+    padding-top: 22px;
+
+    border-top: 1px solid var(--vlife-border);
+}
+
+.reservation-form-actions .btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    width: auto;
+
+    min-height: 42px;
+
+    padding: 0 18px;
+
+    margin: 0;
+
+    white-space: nowrap;
+
+    box-sizing: border-box;
+}
+
+
+/* ANNULER */
+
+.reservation-form-actions .btn-reservation-cancel {
+    min-width: 105px;
+
+    background: #f1f1f1 !important;
+
+    border: 1px solid #ccc !important;
+
+    color: #333 !important;
+}
+
+.reservation-form-actions .btn-reservation-cancel:hover {
+    background: #e2e2e2 !important;
+
+    border-color: #bbb !important;
+
+    color: #222 !important;
+}
+
+
+/* ENREGISTRER */
+
+.reservation-form-actions .btn-save-reservation {
+    min-width: 220px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    ) !important;
+
+    border: none !important;
+
+    color: #fff !important;
+}
+
+.reservation-form-actions .btn-save-reservation:hover {
+    opacity: .92;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 576px) {
+
+    .reservation-form-header {
+        padding: 20px;
+    }
+
+    .reservation-section-title {
+        align-items: flex-start;
+    }
+
+    .reservation-form-actions {
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+    }
+
+    .reservation-form-actions .btn {
+        width: 100%;
+    }
+
+}
+/* =========================================================
+   RÉSERVATIONS - PAGE DÉTAILS
+   ========================================================= */
+
+.reservation-show-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reservation-show-card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.reservation-show-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 25px;
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+    color: #fff;
+}
+
+.reservation-show-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,.18);
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.reservation-show-label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    opacity: .85;
+}
+
+.reservation-show-header h2 {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.reservation-show-header p {
+    color: #fff;
+    font-size: 13px;
+    opacity: .85;
+}
+
+
+/* SECTIONS */
+
+.reservation-detail-section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.reservation-detail-section-number {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.reservation-detail-section-title h5 {
+    margin: 0 0 3px;
+    color: var(--vlife-anthracite);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.reservation-detail-section-title p {
+    margin: 0;
+    color: var(--vlife-gray);
+    font-size: 12px;
+}
+
+
+/* INFORMATIONS */
+
+.reservation-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.reservation-detail-label {
+    color: var(--vlife-gray);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.reservation-detail-value {
+    color: var(--vlife-anthracite);
+    font-size: 14px;
+}
+
+
+/* SÉPARATEUR */
+
+.reservation-show-divider {
+    margin: 32px 0;
+    border-color: var(--vlife-border);
+    opacity: 1;
+}
+
+
+/* CLIENT */
+
+.reservation-client-show {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    background: #f8f8f8;
+}
+
+.reservation-client-show-avatar {
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+    font-weight: 700;
+}
+
+.reservation-client-show strong {
+    display: block;
+    color: var(--vlife-anthracite);
+    font-size: 14px;
+}
+
+.reservation-client-show span {
+    display: block;
+    margin-top: 2px;
+    color: var(--vlife-gray);
+    font-size: 11px;
+}
+
+
+/* RESSOURCES */
+
+.reservation-show-resources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.reservation-show-resources .reservation-resource {
+    display: inline-flex;
+    padding: 6px 10px;
+    border-radius: 7px;
+
+    background: rgba(139,0,56,.08);
+    color: var(--vlife-bordeaux);
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.reservation-show-resources .reservation-not-assigned {
+    display: inline-flex;
+    padding: 6px 10px;
+    border-radius: 7px;
+
+    background: #f3f3f3;
+    color: #777;
+
+    font-size: 12px;
+}
+
+
+/* TABLE PRESTATIONS */
+
+.reservation-detail-table {
+    border: 1px solid var(--vlife-border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.reservation-detail-table thead th {
+    padding: 13px 15px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+
+    border: none;
+
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+}
+
+.reservation-detail-table tbody td {
+    padding: 14px 15px;
+    border-color: var(--vlife-border);
+}
+
+.reservation-detail-table tbody strong {
+    color: var(--vlife-anthracite);
+    font-size: 13px;
+}
+
+.reservation-quantity {
+    display: inline-flex;
+
+    min-width: 28px;
+    padding: 5px 8px;
+
+    justify-content: center;
+
+    border-radius: 6px;
+
+    background: #f1f1f1;
+
+    color: #555;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.reservation-detail-table .reservation-price {
+    color: var(--vlife-bordeaux);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* ACTIONS */
+
+.reservation-show-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    margin-top: 30px;
+    padding-top: 22px;
+
+    border-top: 1px solid var(--vlife-border);
+}
+
+
+/* BOUTON MODIFIER */
+
+.reservation-show-actions .btn-reservation-edit,
+.reservation-show-footer .btn-reservation-edit {
+    background: var(--vlife-bordeaux) !important;
+    border-color: var(--vlife-bordeaux) !important;
+    color: #fff !important;
+}
+
+.reservation-show-actions .btn-reservation-edit:hover,
+.reservation-show-footer .btn-reservation-edit:hover {
+    background: var(--vlife-bordeaux-dark) !important;
+    border-color: var(--vlife-bordeaux-dark) !important;
+    color: #fff !important;
+}
+
+
+/* CARTE PAIEMENT */
+
+.reservation-payment-card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.reservation-payment-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 20px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+}
+
+.reservation-payment-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: rgba(255,255,255,.18);
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.reservation-payment-header h5 {
+    color: #fff;
+    font-weight: 700;
+}
+
+.reservation-payment-header span {
+    font-size: 11px;
+    opacity: .85;
+}
+
+
+/* PAIEMENT EN ATTENTE */
+
+.reservation-payment-info {
+    padding: 15px;
+
+    margin-bottom: 18px;
+
+    border-radius: 9px;
+
+    background: #fff8e6;
+
+    border: 1px solid #f1dfaa;
+}
+
+.reservation-payment-info strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #765b00;
+
+    font-size: 13px;
+}
+
+.reservation-payment-info p {
+    margin: 0;
+
+    color: #7c6a2c;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* BOUTON PAIEMENT */
+
+.reservation-payment-card form {
+    width: 100%;
+}
+
+.reservation-payment-card .reservation-payment-button,
+.reservation-payment-button {
+    width: 100%;
+}
+
+.btn-reservation-payment {
+    width: 100%;
+
+    min-height: 45px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    ) !important;
+
+    border: none !important;
+
+    color: #fff !important;
+
+    font-weight: 700;
+}
+
+.btn-reservation-payment:hover {
+    opacity: .92;
+}
+
+
+/* PAIEMENT RÉUSSI */
+
+.reservation-payment-success {
+    text-align: center;
+
+    padding: 10px 5px;
+}
+
+.reservation-payment-success-icon {
+    width: 50px;
+    height: 50px;
+
+    margin: 0 auto 12px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #198754;
+
+    color: #fff;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.reservation-payment-success strong {
+    display: block;
+
+    color: #198754;
+
+    font-size: 14px;
+}
+
+.reservation-payment-success p {
+    margin: 5px 0 0;
+
+    color: var(--vlife-gray);
+
+    font-size: 12px;
+}
+
+
+/* PAIEMENT ANNULÉ */
+
+.reservation-payment-cancelled {
+    padding: 15px;
+
+    border-radius: 9px;
+
+    background: #f8f8f8;
+}
+
+.reservation-payment-cancelled strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+.reservation-payment-cancelled p {
+    margin: 0;
+
+    color: #888;
+
+    font-size: 12px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .reservation-show-actions {
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    .reservation-show-actions .btn {
+        flex: 1;
+    }
+
+    .reservation-show-header {
+        padding: 20px;
+    }
+
+    .reservation-show-footer {
+        flex-direction: column;
+    }
+
+    .reservation-show-footer .btn {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .reservation-show-actions {
+        flex-direction: column;
+    }
+
+    .reservation-show-actions .btn {
+        width: 100%;
+    }
+
+}
+/* =========================================================
+   PAIEMENTS - LISTE
+   ========================================================= */
+
+.paiement-table-card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.paiement-table-header {
+    display: flex;
+    align-items: center;
+
+    padding: 18px 20px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+}
+
+.paiement-table-header h5 {
+    color: #fff;
+}
+
+.paiement-table-header span {
+    font-size: 12px;
+    opacity: .85;
+}
+
+
+/* TABLE */
+
+.paiement-table-card table {
+    min-width: 1050px;
+}
+
+.paiement-table-card thead th {
+    padding: 13px 15px;
+
+    background: #f7f7f8;
+
+    color: var(--vlife-anthracite);
+
+    border-bottom: 1px solid var(--vlife-border);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: .4px;
+}
+
+.paiement-table-card tbody td {
+    padding: 14px 15px;
+
+    border-color: var(--vlife-border);
+
+    font-size: 13px;
+}
+
+
+/* ID */
+
+.paiement-id {
+    display: inline-flex;
+
+    padding: 5px 8px;
+
+    border-radius: 6px;
+
+    background: #f1f1f1;
+
+    color: var(--vlife-anthracite);
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+/* RÉSERVATION */
+
+.paiement-reservation {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.paiement-reservation-icon {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(139,0,56,.08);
+
+    color: var(--vlife-bordeaux);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.paiement-reservation strong {
+    display: block;
+
+    color: var(--vlife-anthracite);
+
+    font-size: 13px;
+}
+
+.paiement-reservation span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--vlife-gray);
+
+    font-size: 11px;
+}
+
+
+/* MONTANT */
+
+.paiement-montant {
+    color: var(--vlife-bordeaux);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* MODE */
+
+.paiement-mode {
+    display: inline-flex;
+
+    padding: 6px 9px;
+
+    border-radius: 7px;
+
+    background: #f3f3f3;
+
+    color: #555;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* DATE */
+
+.paiement-date {
+    color: var(--vlife-anthracite);
+
+    font-size: 12px;
+}
+
+
+/* RÉFÉRENCE */
+
+.paiement-reference {
+    color: var(--vlife-anthracite);
+
+    font-family: monospace;
+
+    font-size: 12px;
+}
+
+.paiement-empty {
+    color: #999;
+
+    font-size: 12px;
+}
+
+
+/* STATUT */
+
+.paiement-status {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.paiement-status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.paiement-status-paid {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.paiement-status-failed {
+    background: #f8d7da;
+    color: #842029;
+}
+
+.paiement-status-default {
+    background: #e9ecef;
+    color: #495057;
+}
+
+
+/* ACTIONS */
+
+.paiement-actions {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    white-space: nowrap;
+}
+
+.paiement-actions .btn {
+    min-width: 75px;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* PAYER */
+
+.paiement-actions .btn-paiement-pay {
+    background: var(--vlife-bordeaux) !important;
+
+    border-color: var(--vlife-bordeaux) !important;
+
+    color: #fff !important;
+}
+
+.paiement-actions .btn-paiement-pay:hover {
+    background: var(--vlife-bordeaux-dark) !important;
+
+    border-color: var(--vlife-bordeaux-dark) !important;
+
+    color: #fff !important;
+}
+
+
+/* MODIFIER */
+
+.paiement-actions .btn-paiement-edit {
+    background: #666 !important;
+
+    border-color: #666 !important;
+
+    color: #fff !important;
+}
+
+.paiement-actions .btn-paiement-edit:hover {
+    background: #4f4f4f !important;
+
+    border-color: #4f4f4f !important;
+
+    color: #fff !important;
+}
+
+
+/* SUPPRIMER */
+
+.paiement-actions .btn-paiement-delete {
+    background: var(--vlife-bordeaux-dark) !important;
+
+    border-color: var(--vlife-bordeaux-dark) !important;
+
+    color: #fff !important;
+}
+
+.paiement-actions .btn-paiement-delete:hover {
+    background: #45001D !important;
+
+    border-color: #45001D !important;
+
+    color: #fff !important;
+}
+
+
+/* ÉTAT VIDE */
+
+.paiement-empty-state {
+    text-align: center;
+
+    padding: 55px 20px;
+}
+
+.paiement-empty-icon {
+    width: 55px;
+    height: 55px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.paiement-empty-state h5 {
+    color: var(--vlife-anthracite);
+
+    font-weight: 700;
+}
+
+.paiement-empty-state p {
+    color: var(--vlife-gray);
+
+    font-size: 13px;
+
+    margin-bottom: 20px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .paiement-actions {
+        justify-content: flex-start;
+    }
+
+}
+/* =========================================================
+   PAIEMENTS - FORMULAIRE
+   ========================================================= */
+
+.paiement-form-card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.paiement-form-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 22px 25px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+}
+
+.paiement-form-icon {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,.18);
+
+    color: #fff;
+
+    font-size: 22px;
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.paiement-form-header h4 {
+    color: #fff;
+    font-weight: 700;
+}
+
+.paiement-form-header p {
+    color: #fff;
+    opacity: .85;
+    font-size: 13px;
+}
+
+
+/* BOUTON RETOUR */
+
+.btn-paiement-back {
+    background: #666 !important;
+    border-color: #666 !important;
+    color: #fff !important;
+}
+
+.btn-paiement-back:hover {
+    background: #4f4f4f !important;
+    border-color: #4f4f4f !important;
+    color: #fff !important;
+}
+
+
+/* SECTIONS */
+
+.paiement-section-title {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 22px;
+}
+
+.paiement-section-number {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.paiement-section-title h5 {
+    margin: 0 0 3px;
+
+    color: var(--vlife-anthracite);
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.paiement-section-title p {
+    margin: 0;
+
+    color: var(--vlife-gray);
+
+    font-size: 12px;
+}
+
+
+/* LABELS */
+
+.paiement-form-label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--vlife-anthracite);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* INPUTS */
+
+.paiement-input {
+    min-height: 44px;
+
+    border: 1px solid #dfe1e5;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    transition: all .2s ease;
+}
+
+.paiement-input:focus {
+    border-color: var(--vlife-bordeaux);
+
+    box-shadow:
+        0 0 0 .2rem rgba(139,0,56,.10);
+}
+
+
+/* MONTANT + UNITÉ */
+
+.paiement-input-group {
+    position: relative;
+}
+
+.paiement-input-group .paiement-input {
+    padding-right: 65px;
+}
+
+.paiement-input-unit {
+    position: absolute;
+
+    right: 14px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: var(--vlife-bordeaux);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    pointer-events: none;
+}
+
+
+/* AIDE */
+
+.paiement-help {
+    display: block;
+
+    margin-top: 7px;
+
+    color: var(--vlife-gray);
+
+    font-size: 12px;
+}
+
+
+/* NOTICE */
+
+.paiement-notice {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-top: 35px;
+
+    padding: 16px 18px;
+
+    border-radius: 10px;
+
+    background: rgba(139,0,56,.06);
+
+    border: 1px solid rgba(139,0,56,.12);
+}
+
+.paiement-notice-icon {
+    width: 32px;
+    height: 32px;
+
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--vlife-bordeaux);
+
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.paiement-notice strong {
+    display: block;
+
+    color: var(--vlife-anthracite);
+
+    font-size: 13px;
+
+    margin-bottom: 3px;
+}
+
+.paiement-notice p {
+    margin: 0;
+
+    color: var(--vlife-gray);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* ACTIONS */
+
+.paiement-form-actions {
+    display: flex;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    margin-top: 30px;
+    padding-top: 22px;
+
+    border-top: 1px solid var(--vlife-border);
+}
+
+.paiement-form-actions .btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    width: auto;
+
+    min-height: 42px;
+
+    padding: 0 18px;
+
+    margin: 0;
+
+    white-space: nowrap;
+
+    box-sizing: border-box;
+}
+
+
+/* ANNULER */
+
+.paiement-form-actions .btn-paiement-cancel {
+    min-width: 105px;
+
+    background: #f1f1f1 !important;
+
+    border: 1px solid #ccc !important;
+
+    color: #333 !important;
+}
+
+.paiement-form-actions .btn-paiement-cancel:hover {
+    background: #e2e2e2 !important;
+
+    border-color: #bbb !important;
+
+    color: #222 !important;
+}
+
+
+/* ENREGISTRER */
+
+.paiement-form-actions .btn-save-paiement {
+    min-width: 210px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    ) !important;
+
+    border: none !important;
+
+    color: #fff !important;
+}
+
+.paiement-form-actions .btn-save-paiement:hover {
+    opacity: .92;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 576px) {
+
+    .paiement-form-header {
+        padding: 20px;
+    }
+
+    .paiement-section-title {
+        align-items: flex-start;
+    }
+
+    .paiement-form-actions {
+        flex-direction: column-reverse;
+
+        align-items: stretch;
+    }
+
+    .paiement-form-actions .btn {
+        width: 100%;
+    }
+
+}
+
+/* =========================================================
+   PAIEMENTS - CONFIRMATION
+   ========================================================= */
+
+.paiement-confirmation-card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+
+/* HEADER */
+
+.paiement-confirmation-header {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 24px 26px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    );
+
+    color: #fff;
+}
+
+.paiement-confirmation-icon {
+    width: 52px;
+    height: 52px;
+
+    border-radius: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,.18);
+
+    color: #fff;
+
+    font-size: 22px;
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.paiement-confirmation-label {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #fff;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: .7px;
+
+    opacity: .85;
+}
+
+.paiement-confirmation-header h2 {
+    margin: 0 0 4px;
+
+    color: #fff;
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.paiement-confirmation-header p {
+    color: #fff;
+
+    font-size: 12px;
+
+    opacity: .85;
+}
+
+
+/* RÉSUMÉ */
+
+.paiement-confirmation-summary {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.paiement-summary-item {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    background: #f7f7f8;
+
+    border: 1px solid var(--vlife-border);
+}
+
+.paiement-summary-item > span:first-child {
+    color: var(--vlife-gray);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+}
+
+.paiement-summary-item strong {
+    color: var(--vlife-anthracite);
+
+    font-size: 15px;
+}
+
+.paiement-summary-amount {
+    color: var(--vlife-bordeaux) !important;
+
+    font-size: 17px !important;
+}
+
+
+/* DIVIDER */
+
+.paiement-confirmation-divider {
+    margin: 0 0 30px;
+
+    border-color: var(--vlife-border);
+
+    opacity: 1;
+}
+
+
+/* SECTION */
+
+.paiement-confirmation-section {
+    width: 100%;
+}
+
+
+/* NOTICE */
+
+.paiement-confirmation-notice {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-top: 30px;
+
+    padding: 16px 18px;
+
+    border-radius: 10px;
+
+    background: rgba(139,0,56,.06);
+
+    border: 1px solid rgba(139,0,56,.12);
+}
+
+.paiement-confirmation-notice-icon {
+    width: 32px;
+    height: 32px;
+
+    border-radius: 8px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--vlife-bordeaux);
+
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    flex-shrink: 0;
+}
+
+.paiement-confirmation-notice strong {
+    color: var(--vlife-anthracite);
+
+    font-size: 13px;
+}
+
+.paiement-confirmation-notice p {
+    margin: 4px 0 0;
+
+    color: var(--vlife-gray);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* ACTIONS */
+
+.paiement-confirmation-actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 30px;
+
+    padding-top: 22px;
+
+    border-top: 1px solid var(--vlife-border);
+}
+
+.paiement-confirmation-actions .btn {
+    min-height: 42px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 18px;
+
+    white-space: nowrap;
+}
+
+
+/* CONFIRMER */
+
+.btn-paiement-confirm {
+    min-width: 205px;
+
+    background: linear-gradient(
+        135deg,
+        var(--vlife-bordeaux),
+        var(--vlife-anthracite)
+    ) !important;
+
+    border: none !important;
+
+    color: #fff !important;
+
+    font-weight: 600;
+}
+
+.btn-paiement-confirm:hover {
+    opacity: .92;
+
+    color: #fff !important;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .paiement-confirmation-summary {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .paiement-confirmation-header {
+        padding: 20px;
+    }
+
+    .paiement-confirmation-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .paiement-confirmation-actions .btn {
+        width: 100%;
+    }
+
+}
